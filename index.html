@@ -286,10 +286,10 @@
                 (snapshot) => {
                     if (snapshot.exists()) {
                         const data = snapshot.val();
-                        $('#shelf_1').text(Object.keys(data['Loại 1']).length);
-                        $('#shelf_2').text(Object.keys(data['Loại 2']).length);
-                        $('#shelf_3').text(Object.keys(data['Loại 3']).length);
-                        $('#shelf_4').text(Object.keys(data['Loại 4']).length);
+                        $('#shelf_1').text(data['Loại 1'] ? Object.keys(data['Loại 1']).length : 0);
+                        $('#shelf_2').text(data['Loại 2'] ? Object.keys(data['Loại 2']).length : 0);
+                        $('#shelf_3').text(data['Loại 3'] ? Object.keys(data['Loại 3']).length : 0);
+                        $('#shelf_4').text(data['Loại 4'] ? Object.keys(data['Loại 4']).length : 0);
                     } else {
                         console.log('No data available');
                     }
