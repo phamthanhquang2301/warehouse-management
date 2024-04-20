@@ -184,7 +184,7 @@
                                     >
                                         <thead>
                                             <tr>
-                                                <th>Ngày nhập</th>
+                                                <th>Ngày xuất</th>
                                                 <th>Kệ 1</th>
                                                 <th>Kệ 2</th>
                                                 <th>Kệ 3</th>
@@ -303,16 +303,22 @@
                             });
                         });
 
-                        $('#dataTable').DataTable({
-                            data: data_array,
-                            columns: [
-                                { title: 'Ngày nhập', data: 'col_1' },
-                                { title: 'Kệ 1', data: 'col_2' },
-                                { title: 'Kệ 2', data: 'col_3' },
-                                { title: 'Kệ 3', data: 'col_4' },
-                                { title: 'Kệ 4', data: 'col_5' },
-                            ],
-                        });
+                        if ($.fn.dataTable.isDataTable('#dataTable')) {
+                            let table = $('#dataTable').DataTable();
+                            table.clear().draw();
+                            table.rows.add(data_array).draw();
+                        } else {
+                            let table = $('#dataTable').DataTable({
+                                data: data_array,
+                                columns: [
+                                    { title: 'Ngày xuất', data: 'col_1' },
+                                    { title: 'Kệ 1', data: 'col_2' },
+                                    { title: 'Kệ 2', data: 'col_3' },
+                                    { title: 'Kệ 3', data: 'col_4' },
+                                    { title: 'Kệ 4', data: 'col_5' },
+                                ],
+                            });
+                        }
                     } else {
                         console.log('No data available');
                     }
